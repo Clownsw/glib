@@ -1593,8 +1593,8 @@ wrap_g_open (const gchar *filename,
  * g_dir_make_tmp() instead.
  *
  * Returns: (nullable) (type filename): A pointer to @tmpl, which has been
- *     modified to hold the directory name. In case of errors, %NULL is
- *     returned, and %errno will be set.
+ *   modified to hold the directory name. In case of errors, %NULL is
+ *   returned, and %errno will be set.
  *
  * Since: 2.30
  */
@@ -1629,8 +1629,8 @@ g_mkdtemp_full (gchar *tmpl,
  * g_dir_make_tmp() instead.
  *
  * Returns: (nullable) (type filename): A pointer to @tmpl, which has been
- *     modified to hold the directory name.  In case of errors, %NULL is
- *     returned and %errno will be set.
+ *   modified to hold the directory name.  In case of errors, %NULL is
+ *   returned and %errno will be set.
  *
  * Since: 2.30
  */
@@ -1644,7 +1644,7 @@ g_mkdtemp (gchar *tmpl)
  * g_mkstemp_full: (skip)
  * @tmpl: (type filename): template filename
  * @flags: flags to pass to an open() call in addition to O_EXCL
- *     and O_CREAT, which are passed automatically
+ *   and O_CREAT, which are passed automatically
  * @mode: permissions to create the temporary file with
  *
  * Opens a temporary file. See the mkstemp() documentation
@@ -1660,9 +1660,9 @@ g_mkdtemp (gchar *tmpl)
  * on Windows it should be in UTF-8.
  *
  * Returns: A file handle (as from open()) to the file
- *     opened for reading and writing. The file handle should be
- *     closed with close(). In case of errors, -1 is returned
- *     and %errno will be set.
+ *   opened for reading and writing. The file handle should be
+ *   closed with close(). In case of errors, -1 is returned
+ *   and %errno will be set.
  *
  * Since: 2.22
  */
@@ -1692,10 +1692,10 @@ g_mkstemp_full (gchar *tmpl,
  * Most importantly, on Windows it should be in UTF-8.
  *
  * Returns: A file handle (as from open()) to the file
- *     opened for reading and writing. The file is opened in binary
- *     mode on platforms where there is a difference. The file handle
- *     should be closed with close(). In case of errors, -1 is
- *     returned and %errno will be set.
+ *   opened for reading and writing. The file is opened in binary
+ *   mode on platforms where there is a difference. The file handle
+ *   should be closed with close(). In case of errors, -1 is
+ *   returned and %errno will be set.
  */
 gint
 g_mkstemp (gchar *tmpl)
@@ -1783,9 +1783,9 @@ g_get_tmp_name (const gchar      *tmpl,
 /**
  * g_file_open_tmp:
  * @tmpl: (type filename) (nullable): Template for file name, as in
- *     g_mkstemp(), basename only, or %NULL for a default template
+ *   g_mkstemp(), basename only, or %NULL for a default template
  * @name_used: (out) (type filename): location to store actual name used,
- *     or %NULL
+ *   or %NULL
  * @error: return location for a #GError
  *
  * Opens a file for writing in the preferred directory for temporary
@@ -1806,9 +1806,9 @@ g_get_tmp_name (const gchar      *tmpl,
  * name encoding.
  *
  * Returns: A file handle (as from open()) to the file opened for
- *     reading and writing. The file is opened in binary mode on platforms
- *     where there is a difference. The file handle should be closed with
- *     close(). In case of errors, -1 is returned and @error will be set.
+ *   reading and writing. The file is opened in binary mode on platforms
+ *   where there is a difference. The file handle should be closed with
+ *   close(). In case of errors, -1 is returned and @error will be set.
  */
 gint
 g_file_open_tmp (const gchar  *tmpl,
@@ -1839,7 +1839,7 @@ g_file_open_tmp (const gchar  *tmpl,
 /**
  * g_dir_make_tmp:
  * @tmpl: (type filename) (nullable): Template for directory name,
- *     as in g_mkdtemp(), basename only, or %NULL for a default template
+ *   as in g_mkdtemp(), basename only, or %NULL for a default template
  * @error: return location for a #GError
  *
  * Creates a subdirectory in the preferred directory for temporary
@@ -1855,9 +1855,9 @@ g_file_open_tmp (const gchar  *tmpl,
  * modified, and might thus be a read-only literal string.
  *
  * Returns: (type filename) (transfer full): The actual name used. This string
- *     should be freed with g_free() when not needed any longer and is
- *     is in the GLib file name encoding. In case of errors, %NULL is
- *     returned and @error will be set.
+ *   should be freed with g_free() when not needed any longer and is
+ *   is in the GLib file name encoding. In case of errors, %NULL is
+ *   returned and @error will be set.
  *
  * Since: 2.30
  */
@@ -1982,11 +1982,12 @@ g_build_path_va (const gchar  *separator,
  * g_build_pathv:
  * @separator: a string used to separator the elements of the path.
  * @args: (array zero-terminated=1) (element-type filename): %NULL-terminated
- *     array of strings containing the path elements.
+ *   array of strings containing the path elements.
  * 
- * Behaves exactly like g_build_path(), but takes the path elements 
- * as a string array, instead of varargs. This function is mainly
- * meant for language bindings.
+ * Behaves exactly like g_build_path(), but takes the path elements
+ * as a string array, instead of variadic arguments.
+ *
+ * This function is mainly meant for language bindings.
  *
  * Returns: (type filename) (transfer full): a newly-allocated string that
  *     must be freed with g_free().
@@ -2011,10 +2012,12 @@ g_build_pathv (const gchar  *separator,
  * @...: remaining elements in path, terminated by %NULL
  * 
  * Creates a path from a series of elements using @separator as the
- * separator between elements. At the boundary between two elements,
- * any trailing occurrences of separator in the first element, or
- * leading occurrences of separator in the second element are removed
- * and exactly one copy of the separator is inserted.
+ * separator between elements.
+ *
+ * At the boundary between two elements, any trailing occurrences of
+ * separator in the first element, or leading occurrences of separator
+ * in the second element are removed and exactly one copy of the
+ * separator is inserted.
  *
  * Empty elements are ignored.
  *
@@ -2275,14 +2278,15 @@ g_build_filename (const gchar *first_element,
  * @error: return location for a #GError
  *
  * Reads the contents of the symbolic link @filename like the POSIX
- * readlink() function.
+ * `readlink()` function.
  *
- * The returned string is in the encoding used
- * for filenames. Use g_filename_to_utf8() to convert it to UTF-8.
+ * The returned string is in the encoding used for filenames. Use
+ * g_filename_to_utf8() to convert it to UTF-8.
  *
- * The returned string may also be a relative path. Use g_build_filename() to
- * convert it to an absolute path:
- * |[
+ * The returned string may also be a relative path. Use g_build_filename()
+ * to convert it to an absolute path:
+ *
+ * |[<!-- language="C" -->
  * g_autoptr(GError) local_error = NULL;
  * g_autofree gchar *link_target = g_file_read_link ("/etc/localtime", &local_error);
  *
@@ -2298,7 +2302,7 @@ g_build_filename (const gchar *first_element,
  * ]|
  *
  * Returns: (type filename) (transfer full): A newly-allocated string with
- *     the contents of the symbolic link, or %NULL if an error occurred.
+ *   the contents of the symbolic link, or %NULL if an error occurred.
  *
  * Since: 2.4
  */
@@ -2505,12 +2509,12 @@ g_path_skip_root (const gchar *file_name)
  * string.
  *
  * Returns: (type filename): the name of the file without any leading
- *     directory components
+ *   directory components
  *
  * Deprecated:2.2: Use g_path_get_basename() instead, but notice
- *     that g_path_get_basename() allocates new memory for the
- *     returned string, unlike this function which returns a pointer
- *     into the argument.
+ *   that g_path_get_basename() allocates new memory for the
+ *   returned string, unlike this function which returns a pointer
+ *   into the argument.
  */
 const gchar *
 g_basename (const gchar *file_name)
@@ -2553,7 +2557,7 @@ g_basename (const gchar *file_name)
  * separator is returned. If @file_name is empty, it gets ".".
  *
  * Returns: (type filename) (transfer full): a newly allocated string
- *    containing the last component of the filename
+ *   containing the last component of the filename
  */
 gchar *
 g_path_get_basename (const gchar *file_name)
@@ -2747,7 +2751,8 @@ g_path_get_dirname (const gchar *file_name)
  * No file system I/O is done.
  *
  * Returns: (type filename) (transfer full): a newly allocated string with the
- * canonical file path
+ *   canonical file path
+ *
  * Since: 2.58
  */
 gchar *
